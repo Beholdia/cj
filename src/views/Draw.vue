@@ -11,7 +11,7 @@
     @start="startCallback",
     @end="endCallback")
   .bottom
-  .record(@click="onShowRecord")
+  //- .record(@click="onShowRecord")
   .hint
 van-overlay(:show="show" @click="show = false")
   .wrapper(@click.stop)
@@ -103,14 +103,14 @@ const onShowRecord = async () => {
   const { data } = await axios(
     `https://marry.aienji01.cn/houtai_h1/account/act_result?mobile=${user.mobile}`
   )
-  if (data.code === 20000) {
+  if (data.code === 0) {
     const jp_id = data.data.jp_id
     const result = prizes.find((item) => item.id === jp_id).name
     console.log(result)
     prizeText.value = result
     showRecord.value = true
   } else {
-    showToast('您还未抽奖')
+    showToast(data.msg)
   }
 }
 </script>
@@ -184,4 +184,5 @@ const onShowRecord = async () => {
   align-items: center;
   font-size: 24px;
   white-space: nowrap;
-}</style>
+}
+</style>
