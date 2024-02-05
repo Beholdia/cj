@@ -41,14 +41,14 @@ const show = ref(false)
 const showRecord = ref(false)
 const prizeText = ref('')
 
-const blocks = [
-  { imgs: [{ src: 'cj/src/assets/img/wheel.png', width: '100%', rotate: false }] },
-  { imgs: [{ src: 'cj/src/assets/img/wheelContent.png', width: '90%', rotate: true, top: '5%' }] }
-]
 // const blocks = [
-//   { imgs: [{ src: `${configs.baseUrl}/wheel.png`, width: '100%', rotate: false }] },
-//   { imgs: [{ src: `${configs.baseUrl}/wheelContent.png`, width: '90%', rotate: true, top: '5%' }] }
+//   { imgs: [{ src: 'cj/src/assets/img/wheel.png', width: '100%', rotate: false }] },
+//   { imgs: [{ src: 'cj/src/assets/img/wheelContent.png', width: '90%', rotate: true, top: '5%' }] }
 // ]
+const blocks = [
+  { imgs: [{ src: `${configs.baseUrl}/wheel.png`, width: '100%', rotate: false }] },
+  { imgs: [{ src: `${configs.baseUrl}/wheelContent.png`, width: '90%', rotate: true, top: '5%' }] }
+]
 const prizes = [
   { name: '1元话费', id: 2 },
   { name: '1元话费', id: 2 },
@@ -67,8 +67,8 @@ const buttons = [
   {
     radius: '15%',
     // background: 'rgb(255,214,98)',
-    imgs: [{ src: 'cj/src/assets/img/pointer.png', width: '100%', top: '-100%' }]
-    // imgs: [{ src: `${configs.baseUrl}/pointer.png`, width: '100%', top: '-100%' }]
+    // imgs: [{ src: 'cj/src/assets/img/pointer.png', width: '100%', top: '-100%' }]
+    imgs: [{ src: `${configs.baseUrl}/pointer.png`, width: '100%', top: '-100%' }]
     // pointer: true,
     // fonts: [
     //   { text: '抽奖', top: '-10px', fontSize: 12, fontColor: 'rgb(231, 84, 33)', fontWeight: '600' }
