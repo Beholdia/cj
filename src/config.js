@@ -6,5 +6,5 @@ export default {
   // 接口地址
   apiHost: '',
   // 页面路径
-  baseUrl: '/cj'
+  baseUrl: '/static/cj'
 }
