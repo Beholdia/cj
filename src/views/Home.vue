@@ -92,13 +92,15 @@ const prizes = [
 
 const show = ref(false)
 const keyMobile = () => {
-  if (!user.mobile) show.value = true
-  else onShowRecord()
+  // if (!user.mobile) show.value = true
+  // else onShowRecord()
+  show.value = true
 }
 const confirmMobile = () => {
   showDialog({
     message: '是否确认提交？',
   }).then(() => {
+    localStorage.mobile = user.mobile
     onShowRecord()
   });
 }

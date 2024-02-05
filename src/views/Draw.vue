@@ -41,35 +41,34 @@ const show = ref(false)
 const showRecord = ref(false)
 const prizeText = ref('')
 
-// const blocks = [{ imgs: [{ src: `${configs.baseUrl}/wheel.png`, width: '100%', rotate: true }] }]
-// const blocks = [
-//   { imgs: [{ src: 'src/assets/img/wheel.png', width: '100%', rotate: false }] },
-//   { imgs: [{ src: 'src/assets/img/wheelContent.png', width: '90%', rotate: true, top: '5%' }] }
-// ]
 const blocks = [
-  { imgs: [{ src: `${configs.baseUrl}/wheel.png`, width: '100%', rotate: false }] },
-  { imgs: [{ src: `${configs.baseUrl}/wheelContent.png`, width: '90%', rotate: true, top: '5%' }] }
+  { imgs: [{ src: 'cj/src/assets/img/wheel.png', width: '100%', rotate: false }] },
+  { imgs: [{ src: 'cj/src/assets/img/wheelContent.png', width: '90%', rotate: true, top: '5%' }] }
 ]
+// const blocks = [
+//   { imgs: [{ src: `${configs.baseUrl}/wheel.png`, width: '100%', rotate: false }] },
+//   { imgs: [{ src: `${configs.baseUrl}/wheelContent.png`, width: '90%', rotate: true, top: '5%' }] }
+// ]
 const prizes = [
-  { name: '1元话费', id: '2' },
-  { name: '1元话费', id: '2' },
-  { name: '1元话费', id: '2' },
-  { name: '5元话费', id: '7' },
-  { name: '3.5元话费', id: '6' },
-  { name: '3元话费', id: '5' },
-  { name: '2元话费', id: '4' },
-  { name: '1.5元话费', id: '3' },
-  { name: '0.5元话费', id: '1' },
-  { name: '0.5元话费', id: '1' },
-  { name: '0.5元话费', id: '1' },
-  { name: '0.5元话费', id: '1' }
+  { name: '1元话费', id: 2 },
+  { name: '1元话费', id: 2 },
+  { name: '1元话费', id: 2 },
+  { name: '5元话费', id: 7 },
+  { name: '3.5元话费', id: 6 },
+  { name: '3元话费', id: 5 },
+  { name: '2元话费', id: 4 },
+  { name: '1.5元话费', id: 3 },
+  { name: '0.5元话费', id: 1 },
+  { name: '0.5元话费', id: 1 },
+  { name: '0.5元话费', id: 1 },
+  { name: '0.5元话费', id: 1 }
 ]
 const buttons = [
   {
     radius: '15%',
     // background: 'rgb(255,214,98)',
-    // imgs: [{ src: 'src/assets/img/pointer.png', width: '100%', top: '-100%' }]
-    imgs: [{ src: `${configs.baseUrl}/pointer.png`, width: '100%', top: '-100%' }]
+    imgs: [{ src: 'cj/src/assets/img/pointer.png', width: '100%', top: '-100%' }]
+    // imgs: [{ src: `${configs.baseUrl}/pointer.png`, width: '100%', top: '-100%' }]
     // pointer: true,
     // fonts: [
     //   { text: '抽奖', top: '-10px', fontSize: 12, fontColor: 'rgb(231, 84, 33)', fontWeight: '600' }
@@ -81,9 +80,10 @@ const startCallback = async () => {
   const { data } = await axios(
     `https://marry.aienji01.cn/houtai_h1/account/act_cj?mobile=${user.mobile}`
   )
-  if (data.code === 20000) {
+  if (data.code === 0) {
     myLucky.value.play()
     const index = prizes.indexOf(prizes.find((item) => item.id === data.data.jp))
+    console.log(index);
     myLucky.value.stop(index)
   } else {
     showToast(data.msg)
@@ -104,7 +104,7 @@ const onShowRecord = async () => {
     `https://marry.aienji01.cn/houtai_h1/account/act_result?mobile=${user.mobile}`
   )
   if (data.code === 0) {
-    const jp_id = data.data.jp_id
+    const jp_id = data.data.jp
     const result = prizes.find((item) => item.id === jp_id).name
     console.log(result)
     prizeText.value = result
